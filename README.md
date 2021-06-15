@@ -1,92 +1,13 @@
-# 03 JavaScript: Password Generator
+Assignment number three has been a password generator; you can find it attached.
 
-## Your Task
+Here is what I want understood: this thing was originally due on a Monday. We were playing musical-instructors the previous Thursday and Friday, though, so the information necessary to complete the password generator didn't get discussed. Nobody thought to reach out to this class OVER THE WEEKEND informing us that the assignment was being pushed.
 
-This week’s homework requires you to modify starter code to create an application that enables employees to generate random passwords based on criteria that they’ve selected. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean and polished, responsive user interface that adapts to multiple screen sizes.
+Here's why I want that understood: I did this assignment anyway, and almost none of the resulting code has been discussed in class, STILL. I suspect that you will try to bang me for not doing it the way we were shown, and I literally dare you to try it.
 
-The password can include special characters. If you’re unfamiliar with these, see this [list of password special characters](https://www.owasp.org/index.php/Password_special_characters) from the OWASP Foundation.
+Anyway, it DOES work. Thanks, Google. 
 
-## User Story
+It works by getting a series of user inputs from prompt boxes - a numeric and four boolean values. Upon clicking the button, users are asked for the length of the password they would like to generate. Then prompts ask whether users would like to use each of four character types - uppercase letters, lowercase letters, numbers, and special characters. A variable called "characterSet" is established as an empty array, and ultimately will form the basis for random selection for  password characters. As each character type prompt is answered, JS either pushes or does not push an array matching each type - an array of uppercase letters if answers choose, an array of numbers if they choose, and so on. 
 
-```
-AS AN employee with access to sensitive data
-I WANT to randomly generate a password that meets certain criteria
-SO THAT I can create a strong password that provides greater security
-```
+Once all the prompts are answered, and the selection set formed, a blank string variable called "pass" is established to hold each character as they are added by a [for] loop. This loop iterates through a random selection from characterSet by the number of times the user inputted when answering the password-length prompt. When this is finished, the function passes the "pass" variable back to the button-click function, where it takes on the name "password," and is then written to the #password section of the document.
 
-## Acceptance Criteria
-
-```
-GIVEN I need a new, secure password
-WHEN I click the button to generate a password
-THEN I am presented with a series of prompts for password criteria
-WHEN prompted for password criteria
-THEN I select which criteria to include in the password
-WHEN prompted for the length of the password
-THEN I choose a length of at least 8 characters and no more than 128 characters
-WHEN prompted for character types to include in the password
-THEN I choose lowercase, uppercase, numeric, and/or special characters
-WHEN I answer each prompt
-THEN my input should be validated and at least one character type should be selected
-WHEN all prompts are answered
-THEN a password is generated that matches the selected criteria
-WHEN the password is generated
-THEN the password is either displayed in an alert or written to the page
-```
-
-## Mock-Up
-
-The following image shows the web application's appearance and functionality:
-
-![The Password Generator application displays a red button to "Generate Password".](./Assets/03-javascript-homework-demo.png)
-
-## Grading Requirements
-
-This homework is graded based on the following criteria: 
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the preceding acceptance criteria plus the following:
-
-  * The homework should not produce any errors in the console when you inspect it using Chrome DevTools.
-
-### Deployment: 32%
-
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository that contains application code.
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application resembles the mock-up functionality provided in the homework instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality readme file with description, screenshot, and link to deployed application.
-
-## Review
-
-You are required to submit the following for review:
-
-* The URL of the deployed application.
-
-* The URL of the GitHub repository, with a unique name and a readme describing the project.
-
-- - -
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+For data validation, the password-length prompt compares user input against three conditions: whether it is a number, whether it is less than 8, and whether it is greater than 128, as per the syllabus. If any of these conditions are met, a prompt is thrown advising the user that their password must be a number between 8-128, and is then re-prompted. Once a valid number has been entered, the function moves on. The other piece of data validation in the syllabus is that at least one data type should be chosen; if, when the prompts are finished and the characterSet array is empty, then the user hasn't chosen one. In such a case, the #password area will display a message saying that users should pick at least one character type, and to try again.
